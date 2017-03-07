@@ -1,0 +1,21 @@
+{
+  "name": "digital-search",
+  "version": "0.0.1",
+  "description": "Search Really Really Fast",
+  "main": "digitalsearch.js",
+  "scripts": {
+    "test": "mocha test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/arupex/digital-search.git"
+  },
+  "keywords": [
+    "digital",
+    "tree",
+    "trie",
+    "search"
+  ],
+  "author": "dirwin517",
+  "license": "UNLICENSED"
+}
