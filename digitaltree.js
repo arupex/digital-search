@@ -69,7 +69,7 @@ class DigitalSearch {
         }
     }
 
-    private addObjRefToTreeRef(depth, obj) {
+    addObjRefToTreeRef(depth, obj) {
         if (!depth.root) {
             if (!depth.leaf) {
                 depth.leaf = [];
@@ -79,7 +79,7 @@ class DigitalSearch {
     }
 
 
-    private cleanResults(results) {
+    cleanResults(results) {
         let output = {};
         results.forEach((result) => {
             let query = result.query;
@@ -174,7 +174,7 @@ class DigitalSearch {
         });
     }
 
-    private addObjToResults(deep, i, last, opts, results, str) {
+    addObjToResults(deep, i, last, opts, results, str) {
         let word = str.slice(last, i);
         if (!deep.root && deep.leaf && ((i + 1 - last) >= typeof opts.minWordLength === 'number' ? opts.minWordLength : this.minWordLength)) {
 
