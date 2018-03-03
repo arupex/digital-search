@@ -5,7 +5,7 @@
 
 describe('Quck Test', function () {
 
-    let DigitalTree = require('../digitaltree');
+    let DigitalTree = require('../digitalsearch');
     let expect = require('assert').deepEqual;
 
     let list = [
