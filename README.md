@@ -4,16 +4,15 @@ Search an Array with a Digital Tree
 [![npm version](https://badge.fury.io/js/digital-search.svg)](https://badge.fury.io/js/digital-search) 
 [![dependencies](https://david-dm.org/arupex/digital-search.svg)](http://github.com/arupex/digital-search) 
 ![Build Status](https://api.travis-ci.org/arupex/digital-search.svg?branch=master)
-![lifetimeDownloadCount](https://img.shields.io/npm/dt/digital-search.svg?maxAge=2592000)
- <a href='https://pledgie.com/campaigns/31873'><img alt='Pledge To Arupex!' src='https://pledgie.com/campaigns/31873.png?skin_name=chrome' border='0' ></a>
+![lifetimeDownloadCount](https://img.shields.io/npm/dt/digital-search.svg?maxAge=95920000)
 
 
-##Install
+## Install
 
     npm install digital-search --save
 
 
-##Usage
+## Usage
 
     let DigitalSearch = require('digital-search');
     
@@ -33,11 +32,11 @@ Search an Array with a Digital Tree
     
         constructor(data, opts) 
 
-###Adds an object into the DigitalSearch Tree    
+### Adds an object into the DigitalSearch Tree    
     
     add(obj)
 
-###Searches the Digital Search Tree
+### Searches the Digital Search Tree
 
     opts inherit from tree constructor opts, these override those values per search request 
     
@@ -52,7 +51,7 @@ Search an Array with a Digital Tree
     }
     search(str, opts)
 
-###Results
+### Results
 
     console.log('Result', tree.search('ample'))
     
@@ -72,4 +71,14 @@ Search an Array with a Digital Tree
     ]
 
 
-##More Examples [Unit Tests](./test/quick.js)
+### Loading
+
+    tree.load('rootfilename') // loads rootfilename.map / rootfilename.tree
+
+### Saving
+
+    tree.save('rootfilename') // saves rootfilename.map / rootfilename.tree
+
+
+
+## More Examples [Unit Tests](./test/quick.js)

@@ -30,6 +30,65 @@ class DigitalSearch {
         }
     }
 
+    /**
+     * Loads 2 files
+     *  - Tree
+     *  - Map
+     * @param fileName
+     */
+    load (fileName) {
+        const mapSetter = (e) => this.setMap(JSON.parse(e));
+        const treeSetter =  (e) => this.setTree(JSON.parse(e));
+
+        if(typeof require === 'function') {
+            let fs = require('fs');
+            fs.readFile(`${fileName}.map`, 'utf8', mapSetter);
+            fs.readFile(`${fileName}.tree`, 'utf8', treeSetter);
+        }
+        else {
+            this.__doHttpCall('GET', `${fileName}.map`, mapSetter);
+            this.__doHttpCall('GET', `${fileName}.tree`, treeSetter);
+        }
+    }
+
+    __doHttpCall (method, url, cb) {
+        const http = new XMLHttpRequest();
+        http.open(method, url);
+        http.send();
+        http.onload = () => cb(http.responseText);
+    }
+
+    getTree () {
+        return this.tree;
+    }
+
+    getMap () {
+        return this.map;
+    }
+
+    setTree (tree) {
+        this.tree = tree;
+    }
+
+    setMap (map) {
+        this.map = map;
+    }
+
+
+    /**
+     * Saves 2 files
+     *  - Tree
+     *  - Map
+     * @param fileName
+     */
+    save (fileName) {
+        if(typeof require === 'function') {
+            let fs = require('fs');
+            fs.writeFileSync(`${fileName}.map`, 'utf8', JSON.stringify(this.map, null, 3));
+            fs.writeFileSync(`${fileName}.tree`, 'utf8', JSON.stringify(this.tree, null, 3));
+        }
+    }
+
     add(obj) {
 
         let depths = [this.tree];
