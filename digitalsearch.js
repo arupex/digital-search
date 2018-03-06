@@ -2,6 +2,8 @@
  * Created by daniel.irwin on 3/6/17.
  */
 
+'use strict';
+
 class DigitalSearch {
 
     constructor(data, opts) {
@@ -23,11 +25,8 @@ class DigitalSearch {
         this.minWordLength = typeof opts.minWordLength === 'number' ? opts.minWordLength : 3;
 
         this.map = {};
-        if (data && Array.isArray(data)) {
-            data.forEach((el) => {
-                this.add(el);
-            });
-        }
+
+        this.addMany(data);
     }
 
     /**
@@ -37,8 +36,8 @@ class DigitalSearch {
      * @param fileName
      */
     load (fileName) {
-        const mapSetter = (e) => this.setMap(JSON.parse(e));
-        const treeSetter =  (e) => this.setTree(JSON.parse(e));
+        const mapSetter = (err, e) => this.setMap(JSON.parse(e));
+        const treeSetter =  (err, e) => this.setTree(JSON.parse(e));
 
         if(typeof require === 'function') {
             let fs = require('fs');
@@ -84,8 +83,16 @@ class DigitalSearch {
     save (fileName) {
         if(typeof require === 'function') {
             let fs = require('fs');
-            fs.writeFileSync(`${fileName}.map`, 'utf8', JSON.stringify(this.map, null, 3));
-            fs.writeFileSync(`${fileName}.tree`, 'utf8', JSON.stringify(this.tree, null, 3));
+            fs.writeFileSync(`${fileName}.map`, JSON.stringify(this.map, null, 3), 'utf8');
+            fs.writeFileSync(`${fileName}.tree`, JSON.stringify(this.tree, null, 3), 'utf8');
+        }
+    }
+
+    addMany (data) {
+        if (data && Array.isArray(data)) {
+            data.forEach((el) => {
+                this.add(el);
+            });
         }
     }
 
